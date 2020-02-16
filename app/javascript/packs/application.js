@@ -5,11 +5,9 @@
 
 require("@rails/ujs").start()
 require("turbolinks").start()
-require("bootstrap-sprockets")
 require("@rails/activestorage").start()
 require("channels")
-
-
+require("jquery")
 
 
 
@@ -19,3 +17,10 @@ require("channels")
 //
 // const images = require.context('../images', true)
 // const imagePath = (name) => images(name, true)
+
+import 'bootstrap'
+
+document.addEventListener("turbolinks:load", () => {
+  $('[data-toggle="tooltip"]').tooltip()
+})
+
