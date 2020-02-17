@@ -51,6 +51,7 @@ end
 
 group :production do
   gem 'pg'
+  gem 'mini_racer'
 end
 
 
