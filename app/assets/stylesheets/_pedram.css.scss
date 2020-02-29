@@ -103,3 +103,37 @@ footer ul li{
 
 }
 
+#main-footer {
+position: relative;
+display: block;
+float: right;
+width: 100%;
+padding: 25px 0;
+color: #fff;
+border-bottom: 3px solid #444;
+background-color:#1a1a1a;
+}
+
+.inner-wrapper {
+margin: 0 auto;
+padding: 0 30px;
+max-width: 1800px;
+}
+
+#main-footer .footer-top {
+display: block;
+padding-bottom: 30px;
+margin-bottom: 25px;
+border-bottom: 1px solid #3a3a3a;
+}
+
+#main-footer .footer-top .dl-new-buttons {
+display: block;
+float: left;
+}
+
+#main-footer .footer-top .footer-nav {
+display: block;
+float: right;
+padding-top: 10px;
+}
