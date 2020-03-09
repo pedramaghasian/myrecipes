@@ -7,5 +7,6 @@ class Chef < ApplicationRecord
                   uniqueness: {case_sensitive: false}
   has_many :recipes   
   has_secure_password 
-  validates :password , presence: true , length: {minimum:7} , allow_nil: true          
+  validates :password , presence: true , length: {minimum:7} , allow_nil: true    
+  default_scope -> {order(updated_at: :desc)}      
 end

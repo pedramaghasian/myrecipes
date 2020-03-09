@@ -7,7 +7,11 @@
 </div>
 
 <h4 align="center"><%= @chef.chefname%>'s recipes</h4>
-<% @chef.recipes.each do |recipe|%>
+
+<div align="center">
+  <%= will_paginate @chef_recipes%>
+</div>
+<% @chef_recipes.each do |recipe|%>
   <div class="row">
     <div class="col-md-2">
       <section class=" chef_info center">
@@ -23,3 +27,6 @@
     </div>
   </div>
 <%end%>
+<div align="center">
+  <%= will_paginate @chef_recipes%>
+</div>
