@@ -1,5 +1,8 @@
 class ChefsController < ApplicationController 
 
+  before_action :require_same_user,only:[:edit,:update,:destroy]
+
+
   def index 
     @chefs=Chef.paginate(page: params[:page],per_page: 5)
   end
@@ -12,6 +15,7 @@ class ChefsController < ApplicationController
     # debugger
     @chef=Chef.new(chef_params)
     if @chef.save 
+      session[:chef_id]=@chef.id
       flash[:success]= "Welcome #{@chef.chefname} to MyRecipe App!"
       redirect_to chef_path(@chef)
     else
@@ -48,6 +52,13 @@ class ChefsController < ApplicationController
   private 
   def chef_params
     params.require(:chef).permit(:chefname,:email,:password,:password_confirmation)
+  end
+
+  def require_same_user
+    if current_chef != @chef 
+      flash[:danger]="you can only Edite or Delete your own account !!!"
+      redirect_to chefs_path
+    end
   end
 
   
