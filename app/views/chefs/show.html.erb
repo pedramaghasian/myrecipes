@@ -5,36 +5,16 @@
     <%= gravatar_for @chef,size: 150%>
   </div>
 </div>
+<% if @chef.recipes.count != 0%>
+  <h4 align="center"><%= @chef.chefname%>'s recipes</h4>
 
-<h4 align="center"><%= @chef.chefname%>'s recipes</h4>
-
-<div align="center">
-  <%= will_paginate @chef_recipes%>
-</div>
-<% @chef_recipes.each do |recipe|%>
-  <div class="row">
-    <div class="col-md-2">
-      <section class=" chef_info center">
-      <%= gravatar_for(recipe.chef,size: 120)%>
-      </section>
-    </div>
-    <div class="col-md-8 well">
-      <h4><%= link_to recipe.name.capitalize, recipe_path(recipe) %></h4>
-      <p><%= truncate(recipe.description , lenght:150)%></p>
-      <p>
-        <span class="quiet"><small>Created <%= time_ago_in_words(recipe.created_at)%>ago</small></span>
-      </p>
-      <% if logged_in? && (current_chef == recipe.chef || current_chef.admin?) %>
-        <div class="recipe-actions">
-          <%= link_to "Edit this recipe ", edit_recipe_path(recipe),class: "btn btn-xs btn-warning"%>
-          <%= link_to "Delete this recipe", recipe_path(recipe),method: :delete,
-                                            data: { confirm: 'Are you sure?' },
-                                            class:"btn btn-xs btn-danger"%>
-        </div>
-      <%end%>
-    </div>
+  <div align="center">
+    <%= will_paginate @chef_recipes%>
   </div>
+  <%= render 'recipes/recipe',obj: @chef_recipes%>
+  <div align="center">
+    <%= will_paginate @chef_recipes%>
+  </div>
+<%else%>
+  <h4 align="center">No Recipes Yet !</h4>
 <%end%>
-<div align="center">
-  <%= will_paginate @chef_recipes%>
-</div>
