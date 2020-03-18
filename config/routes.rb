@@ -3,7 +3,9 @@ Rails.application.routes.draw do
   get 'pages/home', to: 'pages#home'
 
   
-  resources :recipes
+  resources :recipes do 
+    resources :comments,only: [:create] # this is nessted routes
+  end
   # get '/recipes' , to: 'recipes#index'
   # get'/recipes/new',to: 'recipes#new' , as: 'new_recipe'
   # get '/recipes/:id',to: 'recipes#show', as: 'recipe'
