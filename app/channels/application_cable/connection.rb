@@ -1,6 +1,6 @@
 module ApplicationCable
   class Connection < ActionCable::Connection::Base
-    rescue_from StandardError , with: :report_error
+
     identified_by :current_chef
 
     def connect
@@ -18,10 +18,6 @@ module ApplicationCable
       else
         reject_unauthorized_connection
       end 
-    end
-
-    def report_errors(e)
-      SomeExternalBugtrackingService.notify(e)
     end
   end
 end
